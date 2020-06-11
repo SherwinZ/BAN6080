@@ -104,17 +104,6 @@ for (i in seq_along(sp_90)) {
   prices[[sp_90[i]]] <- temp$`Adj Close`
 }
 
-#sp_180 <- SP500_symbol[91:180]
-#sp_270 <- SP500_symbol[181:270]
-#sp_360 <- SP500_symbol[271:360]
-#sp_450 <- SP500_symbol[361:450]
-#sp_500 <- SP500_symbol[451:500]
-
-#SP180_p <- stockhistoricals(sp_180, "2009-11-30", "2020-01-01")
-#SP270_p <- stockhistoricals(sp_270, "2009-11-30", "2020-01-01")
-#SP360_p <- stockhistoricals(sp_360, "2009-11-30", "2020-01-01")
-#SP450_p <- stockhistoricals(sp_250, "2009-11-30", "2020-01-01")
-# SP500_p <- stockhistoricals(sp_500, "2009-11-30", "2020-01-01")
 
 ###### Scrape SP500 ################
 sp_500_aval <- SP500_symbol[!SP500_symbol %in% c("OTIS", "CARR")]
