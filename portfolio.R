@@ -87,6 +87,7 @@ SP500_symbol <- str_replace(SP500_symbol,"\\.","-")
 
 sp_90 <- head(SP500_symbol,90)
 
+# remove 2 companies whose history are no longer available
 sp_500_aval <- SP500_symbol[!SP500_symbol %in% c("OTIS", "CARR")]
 
 # NASDAQ_m <- stockhistoricals("NASDAQ", "2009-11-30", "2020-01-01")
@@ -105,11 +106,11 @@ for (i in seq_along(sp_90)) {
 }
 
 
-###### Scrape SP500 ################
+###### Crawl SP500 ################
 sp_500_aval <- SP500_symbol[!SP500_symbol %in% c("OTIS", "CARR")]
 
 #### CORE CODE
-# SP500_p <- stockhistoricals(sp_500_aval, "2009-11-30", "2020-01-01")
+SP500_p <- stockhistoricals(sp_500_aval, "2009-11-30", "2020-01-01")
 
 prices <- select(SP500_p[[1]], Date)
 dates <- select(SP500_p[[1]], Date)
@@ -172,7 +173,7 @@ returns <- prices_gathered %>%
   ungroup() %>%
   spread(symbol, monthly.returns)
 
-############ Add rf #########
+############ Add risk free rates #########
 rf_name <- c("%5EIRX")
 rf <- stockhistoricals(rf_name, "2009-11-30", "2020-01-01")
 
